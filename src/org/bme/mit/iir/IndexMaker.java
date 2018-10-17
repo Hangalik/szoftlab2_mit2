@@ -38,17 +38,17 @@ public class IndexMaker {
     }
 
     public void processDirectory(String directoryName) {
-        processDirectory(Paths.get(directoryName));
+        processDirectoryPath(Paths.get(directoryName));
     }
 
-    private void processDirectory(Path directoryPath) {
+    private void processDirectoryPath(Path directoryPath) {
         if (Files.isRegularFile(directoryPath)) {
             fileToIndex(directoryPath);
             return;
         }
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(directoryPath)) {
             for (Path file: stream) {
-                processDirectory(file);
+                processDirectoryPath(file);
             }
         } catch (IOException | DirectoryIteratorException e) {
             e.printStackTrace();

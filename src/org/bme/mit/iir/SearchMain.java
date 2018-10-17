@@ -17,8 +17,7 @@ public class SearchMain {
                     break;
                 }
                 String searchPhrases[] = line.split(" ");
-                Set<String> searchResults = indexSearcher.searchForPhrases(searchPhrases);
-                System.out.println(searchResults.size() + " results");
+                Set<String> searchResults = indexSearcher.extendedSearchForPhrases(searchPhrases);
                 for (String searchResult: searchResults) {
                     System.out.println(searchResult);
                 }
